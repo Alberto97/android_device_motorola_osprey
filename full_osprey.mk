@@ -12,16 +12,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-LOCAL_PATH:= $(call my-dir)
-# HAL module implemenation stored in
-# hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
-include $(CLEAR_VARS)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-LOCAL_SRC_FILES := lights.c
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_SHARED_LIBRARIES := liblog
-LOCAL_MODULE := lights.$(TARGET_BOARD_PLATFORM)
-LOCAL_MODULE_TAGS := optional
+# Inherit from osprey device
+$(call inherit-product, device/motorola/osprey/device.mk)
 
-include $(BUILD_SHARED_LIBRARY)
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := osprey
+PRODUCT_NAME := full_osprey
+PRODUCT_BRAND := motorola
+PRODUCT_MODEL := osprey
+PRODUCT_MANUFACTURER := motorola

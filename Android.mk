@@ -21,24 +21,23 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter falcon peregrine thea titan,$(TARGET_DEVICE)),)
+ifneq ($(filter osprey,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
 
-FIRMWARE_ADSP_IMAGES := \
-    adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 \
-    adsp.b05 adsp.b06 adsp.b07 adsp.b08 adsp.b09 \
-    adsp.b10 adsp.b11 adsp.b12 adsp.mdt
+FIRMWARE_CMNLIB_IMAGES := \
+    cmnlib.b00 cmnlib.b01 cmnlib.b02 cmnlib.b03 cmnlib.mdt
 
-FIRMWARE_ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_ADSP_IMAGES)))
-$(FIRMWARE_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "ADSP Firmware link: $@"
+FIRMWARE_CMNLIB_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(FIRMWARE_CMNLIB_IMAGES)))
+$(FIRMWARE_CMNLIB_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "CMNLIB Firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_ADSP_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_CMNLIB_SYMLINKS)
+
 
 FIRMWARE_KEYMASTER_IMAGES := \
     keymaster.b00 keymaster.b01 keymaster.b02 keymaster.b03 keymaster.mdt
@@ -52,8 +51,8 @@ $(FIRMWARE_KEYMASTER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_KEYMASTER_SYMLINKS)
 
-FIRMWARE_MBA_IMAGES := \
-    mba.b00 mba.mdt
+
+FIRMWARE_MBA_IMAGES := mba.mdt
 
 FIRMWARE_MBA_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_MBA_IMAGES)))
 $(FIRMWARE_MBA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
@@ -64,12 +63,12 @@ $(FIRMWARE_MBA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MBA_SYMLINKS)
 
+
 FIRMWARE_MODEM_IMAGES := \
-    modem.b00 modem.b01 modem.b02 modem.b03 modem.b04 modem.b05 \
-    modem.b06 modem.b07 modem.b08 modem.b10 modem.b11 modem.b12 \
-    modem.b13 modem.b15 modem.b16 modem.b17 modem.b18 modem.b19 \
-    modem.b20 modem.b21 modem.b22 modem.b24 modem.b25 modem.b26 \
-    modem.b27 modem.mdt
+    modem.b00.gz modem.b01.gz modem.b02.gz modem.b03.gz modem.b04.gz modem.b05.gz \
+    modem.b06.gz modem.b07.gz modem.b08.gz modem.b10.gz modem.b11.gz modem.b14.gz \
+    modem.b15.gz modem.b16.gz modem.b17.gz modem.b18.gz modem.b19.gz modem.b20.gz \
+    modem.b23.gz modem.b24.gz modem.b25.gz modem.b27.gz modem.b28.gz modem.mdt.gz
 
 FIRMWARE_MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_MODEM_IMAGES)))
 $(FIRMWARE_MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
@@ -80,9 +79,23 @@ $(FIRMWARE_MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MODEM_SYMLINKS)
 
+
+FIRMWARE_PROV_IMAGES := \
+    prov.b00 prov.b01 prov.b02 prov.b03 prov.mdt
+
+FIRMWARE_PROV_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(FIRMWARE_PROV_IMAGES)))
+$(FIRMWARE_PROV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "PROV Firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_PROV_SYMLINKS)
+
+
 FIRMWARE_WCNSS_IMAGES := \
     wcnss.b00 wcnss.b01 wcnss.b02 wcnss.b04 \
-    wcnss.b06 wcnss.b07 wcnss.b08 wcnss.b09 \
+    wcnss.b06 wcnss.b09 wcnss.b10 wcnss.b11 \
     wcnss.mdt
 
 FIRMWARE_WCNSS_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_WCNSS_IMAGES)))
@@ -93,6 +106,7 @@ $(FIRMWARE_WCNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_WCNSS_SYMLINKS)
+
 
 FIRMWARE_WIDEVINE_IMAGES := \
     widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.mdt

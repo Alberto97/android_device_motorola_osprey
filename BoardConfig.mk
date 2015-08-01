@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,37 +14,42 @@
 # limitations under the License.
 
 # inherit from the proprietary version
--include vendor/motorola/msm8226-common/BoardConfigVendor.mk
+-include vendor/motorola/osprey/BoardConfigVendor.mk
 
-LOCAL_PATH := device/motorola/msm8226-common
+LOCAL_PATH := device/motorola/osprey
 
 BOARD_VENDOR := motorola-qcom
 
-TARGET_SPECIFIC_HEADER_PATH := device/motorola/msm8226-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/motorola/osprey/include
 
 # Platform
-TARGET_BOARD_PLATFORM := msm8226
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
+TARGET_BOARD_PLATFORM := msm8916
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
 
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_MEMCPY_BASE_OPT_DISABLE := true
-TARGET_CPU_VARIANT := krait
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := MotoG3,osprey_umts,osprey_uds,osprey_ud2,osprey_udstv
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := MSM8226
+TARGET_BOOTLOADER_BOARD_NAME := MSM8916
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 vmalloc=400M utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags
-BOARD_KERNEL_BASE := 0x00000000
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M androidboot.bootdevice=7824900.sdhci utags.blkdev=/dev/block/bootdevice/by-name/utags utags.backup=/dev/block/bootdevice/by-name/utagsBackup movablecore=160M androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8226
+#TARGET_KERNEL_SOURCE := kernel/motorola/msm8916
+#TARGET_KERNEL_CONFIG := osprey_defconfig
 
 # Audio
 AUDIO_FEATURE_ENABLED_FM := true
@@ -81,8 +86,13 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_osprey.c
+TARGET_UNIFIED_DEVICE := true
+
 # Lights
-TARGET_PROVIDES_LIBLIGHT := true
+#TARGET_PROVIDES_LIBLIGHT := true
 
 # Memory
 MALLOC_IMPL := dlmalloc
@@ -95,6 +105,10 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16879616
+#BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1023410176
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 5930598400 # 5930614784 - 16384
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
@@ -104,42 +118,43 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # Release tools
-TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/msm8226-common
+#TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/osprey
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    device/motorola/msm8226-common/sepolicy
+#BOARD_SEPOLICY_DIRS += \
+#    device/motorola/osprey/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    akmd8963.te \
-    atvc.te \
-    batt_health.te \
-    bootanim.te \
-    device.te \
-    file_contexts \
-    file.te \
-    init.te \
-    init_shell.te \
-    kernel.te \
-    keystore.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    platform_app.te \
-    property_contexts \
-    property.te \
-    rild.te \
-    rmt_storage.te \
-    sensord.te \
-    system_app.te \
-    system_server.te \
-    thermal-engine.te \
-    ueventd.te \
-    vold.te
+#BOARD_SEPOLICY_UNION += \
+#    akmd8963.te \
+#    atvc.te \
+#    batt_health.te \
+#    bootanim.te \
+#    device.te \
+#    file_contexts \
+#    file.te \
+#    init.te \
+#    init_shell.te \
+#    kernel.te \
+#    keystore.te \
+#    mediaserver.te \
+#    mm-qcamerad.te \
+#    mpdecision.te \
+#    platform_app.te \
+#    property_contexts \
+#    property.te \
+#    rild.te \
+#    rmt_storage.te \
+#    sensord.te \
+#    system_app.te \
+#    system_server.te \
+#    thermal-engine.te \
+#    ueventd.te \
+#    vold.te
 
 # Vold
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true

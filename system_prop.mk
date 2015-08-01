@@ -13,13 +13,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.calfile0=/etc/Bluetooth_cal.acdb \
-    persist.audio.calfile1=/etc/General_cal.acdb \
-    persist.audio.calfile2=/etc/Global_cal.acdb \
-    persist.audio.calfile3=/etc/Handset_cal.acdb \
-    persist.audio.calfile4=/etc/Hdmi_cal.acdb \
-    persist.audio.calfile5=/etc/Headset_cal.acdb \
-    persist.audio.calfile6=/etc/Speaker_cal.acdb
+    persist.audio.calfile0=/etc/acdbdata/Bluetooth_cal.acdb \
+    persist.audio.calfile1=/etc/acdbdata/General_cal.acdb \
+    persist.audio.calfile2=/etc/acdbdata/Global_cal.acdb \
+    persist.audio.calfile3=/etc/acdbdata/Handset_cal.acdb \
+    persist.audio.calfile4=/etc/acdbdata/Hdmi_cal.acdb \
+    persist.audio.calfile5=/etc/acdbdata/Headset_cal.acdb \
+    persist.audio.calfile6=/etc/acdbdata/Speaker_cal.acdb
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
@@ -86,15 +86,22 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true \
     ro.qualcomm.cabl=0 \
-    ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
+    ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.apn_delay=5000 \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.dfr_mode_set=1 \
-    persist.radio.msgtunnel.start=false \
+    persist.radio.mot_ecc_enabled=1 \
+    persist.radio.msgtunnel.start=true \
     persist.radio.no_wait_for_card=1 \
-    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+    persist.radio.oem_ind_to_both=false \
+    persist.radio.plmn_name_cmp=1 \
+    persist.radio.relay_oprt_change=1 \
+    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
+    ro.gsm.data_retry_config=default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000 \
+    ro.telephony.default_network=9
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true
@@ -105,16 +112,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.usb.mtp=0x2e82 \
-    ro.usb.mtp_adb=0x2e76 \
-    ro.usb.ptp=0x2e83 \
-    ro.usb.ptp_adb=0x2e84 \
-    ro.usb.bpt=0x2e28 \
-    ro.usb.bpt_adb=0x2e29 \
-    ro.usb.bpteth=0x2e2a \
-    ro.usb.bpteth_adb=0x2e2b
+    ro.usb.mtp=2e82 \
+    ro.usb.mtp_adb=2e76 \
+    ro.usb.ptp=2e83 \
+    ro.usb.ptp_adb=2e84 \
+    ro.usb.bpt=2ec1 \
+    ro.usb.bpt_adb=2ec5 \
+    ro.usb.bpteth=2ec3 \
+    ro.usb.bpteth_adb=2ec6
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qc.sub.rdump.on=1 \
-    persist.sys.ssr.restart_level=3
+    persist.sys.ssr.restart_level=ALL_ENABLE
