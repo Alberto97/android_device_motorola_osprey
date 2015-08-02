@@ -57,7 +57,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     property_get("ro.boot.radio", radio);
 
     property_set("ro.product.model", "MotoG3");
-    if (ISMATCH(radio, "0x1")) { /* check radio value */
+    if (ISMATCH(radio, "0x1")) {
         /* XT1540 */
         property_set("ro.product.name", "osprey_retus");
         property_set("ro.product.device", "osprey_umts");
