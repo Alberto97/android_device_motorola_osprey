@@ -66,7 +66,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.product", "osprey_umts");
         property_set("ro.mot.build.customerid", "retus");
         property_set("ro.gsm.data_retry_config", "");
-    } else if (ISMATCH(radio, "0x5")) { /* check radio value */
+    } else if (ISMATCH(radio, "0x4")) {
         /* XT1541 */
         property_set("ro.product.name", "osprey_reteu");
         property_set("ro.product.device", "osprey_umts");
