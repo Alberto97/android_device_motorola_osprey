@@ -120,9 +120,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
-# Release tools
-#TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/osprey
-
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
 
