@@ -35,7 +35,7 @@ TARGET_CPU_VARIANT := cortex-a53
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := MotoG3,osprey_umts,osprey_uds,osprey_ud2,osprey_udstv
+TARGET_OTA_ASSERT_DEVICE := MotoG3,osprey_umts,osprey_cdma,osprey_uds,osprey_ud2,osprey_udstv
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8916

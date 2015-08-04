@@ -99,9 +99,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.oem_ind_to_both=false \
     persist.radio.plmn_name_cmp=1 \
     persist.radio.relay_oprt_change=1 \
-    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
-    ro.gsm.data_retry_config=default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000 \
-    ro.telephony.default_network=9
+    rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true
