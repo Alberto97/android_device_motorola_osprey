@@ -89,7 +89,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.mot.build.customerid", "retla");
         property_set("persist.radio.all_bc_msg", "all");
         property_set("persist.radio.process_sups_ind", "1");
-    } else if (ISMATCH(radio, "0x6")) { /* check radio value */
+    } else if (ISMATCH(radio, "0x6")) {
         /* XT1543 */
         setMsim();
         property_set("ro.product.name", "osprey_retla_ds");
