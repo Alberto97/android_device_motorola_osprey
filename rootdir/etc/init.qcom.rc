@@ -496,12 +496,6 @@ on post-fs-data
     # AK09912 calibration file directory
     mkdir /data/misc/akmd 0770 system compass
 
-    # Create PERFD deamon related dirs
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
-
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -623,12 +617,6 @@ service qseecomd /system/bin/qseecomd
    class core
    user root
    group root
-
-
-service perfd /system/bin/perfd
-   class main
-   user root
-   disabled
 
 service thermal-engine /system/bin/thermal-engine
    class main
@@ -960,5 +948,4 @@ on property:sys.boot_completed=1
      write /sys/module/cpu_boost/parameters/sync_threshold 998400
      write /sys/module/cpu_boost/parameters/input_boost_freq 1094400
      write /sys/module/cpu_boost/parameters/input_boost_ms 40
-     start perfd
      start batt_health
