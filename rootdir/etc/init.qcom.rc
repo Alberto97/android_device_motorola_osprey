@@ -629,6 +629,12 @@ on property:sys.boot_completed=1
      write /sys/devices/system/cpu/cpufreq/interactive/target_loads 80
      start perfd
 
+     # CPU Input Boost
+     write /sys/module/cpu_boost/parameters/boost_ms 20
+     write /sys/module/cpu_boost/parameters/sync_threshold 1094400
+     write /sys/module/cpu_boost/parameters/input_boost_freq 1363200
+     write /sys/module/cpu_boost/parameters/input_boost_ms 40
+
 service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
