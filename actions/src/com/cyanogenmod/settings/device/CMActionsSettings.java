@@ -77,7 +77,7 @@ public class CMActionsSettings {
     }
 
     public void chopChopAction() {
-        new TorchAction(mContext).action();
+        new TorchAction().action();
     }
 
     private void loadPreferences(SharedPreferences sharedPreferences) {

@@ -17,8 +17,8 @@
 package com.cyanogenmod.settings.device;
 
 import android.content.Context;
-import android.hardware.TorchManager;
-import android.os.Vibrator;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
 import android.util.Log;
 
 public class TorchAction implements SensorAction {
@@ -26,17 +26,26 @@ public class TorchAction implements SensorAction {
 
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
-    private final TorchManager mTorchManager;
-    private final Vibrator mVibrator;
+    private Camera cam;
+    private Parameters p;
+    private boolean isTorchOn = false;
 
-    public TorchAction(Context context) {
-        mTorchManager = (TorchManager) context.getSystemService(Context.TORCH_SERVICE);
-        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+    public TorchAction() {
+        cam = Camera.open();   
     }
 
     @Override
-    public void action() {
-        mVibrator.vibrate(250);
-        mTorchManager.toggleTorch();
+    public void action() {  
+        p = cam.getParameters();
+        if(isTorchOn){
+           p.setFlashMode(Parameters.FLASH_MODE_OFF);
+           cam.setParameters(p);
+           cam.stopPreview();
+           cam.release();
+        } else {
+           p.setFlashMode(Parameters.FLASH_MODE_TORCH);
+           cam.setParameters(p);
+           cam.startPreview();
+        }
     }
 }

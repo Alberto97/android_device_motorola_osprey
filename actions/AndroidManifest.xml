@@ -6,6 +6,7 @@
     android:sharedUserId="android.uid.system"
     >
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -16,7 +17,8 @@
 
     <application
         android:allowBackup="true"
-        android:label="CMActions"
+        android:icon="@drawable/ic_launcher"
+        android:label="Actions"
         android:persistent="true"
         android:theme="@android:style/Theme.Material.Settings" >
 
@@ -35,8 +37,8 @@
 
         <activity
                   android:excludeFromRecents="true"
-                  android:name="CMActions"
-                  android:label="CMActions"
+                  android:name="Actions"
+                  android:label="Actions"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
                   android:windowAnimationStyle="@null">
@@ -47,9 +49,10 @@
 
         <activity
             android:name=".TouchscreenGestureSettings"
-            android:label="@string/screen_gestures_panel_title">
+            android:label="Actions" >
             <intent-filter>
-                <action android:name="com.cyanogenmod.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.title"
