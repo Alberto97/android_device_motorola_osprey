@@ -1,4 +1,4 @@
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Release name
-PRODUCT_RELEASE_NAME := osprey
-
 $(call inherit-product, device/motorola/osprey/full_osprey.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := osprey
 PRODUCT_NAME := aosp_osprey
 PRODUCT_BRAND := Motorola
-PRODUCT_MODEL := MotoG3
 PRODUCT_MANUFACTURER := Motorola
+PRODUCT_RELEASE_NAME := osprey
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
