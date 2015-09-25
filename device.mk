@@ -148,11 +148,8 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw \
-    qcmediaplayer
+    libstagefrighthw 
 
-PRODUCT_BOOT_JARS += \
-    qcmediaplayer
 
 # Power
 PRODUCT_PACKAGES += \
