@@ -29,6 +29,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <linux/stat.h>
 #include <fcntl.h>
 #include <linux/types.h>
