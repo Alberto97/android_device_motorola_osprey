@@ -136,7 +136,11 @@ PRODUCT_COPY_FILES += \
 # Misc
 PRODUCT_PACKAGES += \
     libbson \
-    libxml2
+    libxml2 \
+    libtune2fs
+
+PRODUCT_PACKAGES += \
+    e2fsck
 
 # OMX
 PRODUCT_PACKAGES += \

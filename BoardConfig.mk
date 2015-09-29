@@ -105,6 +105,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16879616	# 16484 * 1024 mmcblk0p32
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2432696320	# 2375680 * 1024 mmcblk0p41
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 8388608 	# 8192 * 1024 mmcblk0p29
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 4865261568 # 4751232 * 1024 mmcblk0p42
+TARGET_NO_RECOVERY := true
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
@@ -120,10 +121,10 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # SELinux
 
-include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy
+#BOARD_SEPOLICY_DIRS += \
+#    $(DEVICE_PATH)/sepolicy
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
