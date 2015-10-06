@@ -70,7 +70,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
-TARGET_CRYPTFS_HW_PATH := $(DEVICE_PATH)/cryptfs_hw
+TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw
 
 
 # Display
