@@ -78,12 +78,17 @@
 #define AID_SDCARD_ALL    1035  /* access all users external storage */
 #define AID_LOGD          1036  /* log daemon */
 #define AID_SHARED_RELRO  1037  /* creator of shared GNU RELRO files */
-
+#define AID_DBUS          1038  /* dbus-daemon IPC broker process */
 #define AID_AUDIT         1049  /* audit daemon */
 
 #define AID_SHELL         2000  /* adb and debug shell user */
 #define AID_CACHE         2001  /* cache access */
 #define AID_DIAG          2002  /* access to diagnostic resources */
+
+/* The range 2900-2999 is reserved for OEM, and must never be
+ * used here */
+#define AID_OEM_RESERVED_START 2900
+#define AID_OEM_RESERVED_END   2999
 
 /* The 3000 series are intended for use as supplemental group id's only.
  * They indicate special Android capabilities that the kernel is aware of. */
@@ -103,6 +108,10 @@
 #define AID_IMS           3010 /* can read/write /dev/socket/imsrtp */
 #define AID_SENSORS       3011 /* access to /dev/socket/sensor_ctl_socket & QCCI/QCSI */
 #endif
+
+/* The range 5000-5999 is also reserved for OEM, and must never be used here. */
+#define AID_OEM_RESERVED_2_START 5000
+#define AID_OEM_RESERVED_2_END   5999
 
 /* Motorola IDs */
 #define AID_MOT_ACCY      9000  /* access to accessory */
@@ -188,6 +197,7 @@ static const struct android_id_info android_ids[] = {
     { "sdcard_all",    AID_SDCARD_ALL, },
     { "logd",          AID_LOGD, },
     { "shared_relro",  AID_SHARED_RELRO, },
+    { "dbus",          AID_DBUS, },
 
     { "audit",         AID_AUDIT, },
 
