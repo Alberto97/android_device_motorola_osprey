@@ -37,6 +37,12 @@
 
 #include "init_msm.h"
 
+void setMsim()
+{
+    property_set("persist.radio.force_get_pref", "1");
+    property_set("persist.radio.multisim.config", "dsds");
+}
+
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
@@ -155,8 +161,4 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     INFO("Found sku id: %s setting build properties for %s device\n", sku, devicename);
 }
 
-void setMsim()
-{
-    property_set("persist.radio.force_get_pref", "1");
-    property_set("persist.radio.multisim.config", "dsds");
-}
+
