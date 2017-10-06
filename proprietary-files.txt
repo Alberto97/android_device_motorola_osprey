@@ -32,7 +32,7 @@ vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
 vendor/lib/libmmcamera2_frame_algorithm.so
 vendor/lib/libmmcamera2_iface_modules.so
-vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_imglib_modules.so|e5b722e22814902057ab081fc548219400799288
 vendor/lib/libmmcamera2_is.so
 vendor/lib/libmmcamera2_isp_modules.so
 vendor/lib/libmmcamera2_pproc_modules.so
@@ -50,7 +50,7 @@ vendor/lib/libmmcamera_s5k3m2.so
 vendor/lib/libmmcamera_s5k5e2.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
-vendor/lib/libmmcamera_wavelet_lib.so
+vendor/lib/libmmcamera_wavelet_lib.so|d4ffb48a01cf3600e6f53cd467fc8ad2f97dbb69
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/liboemcamera.so
