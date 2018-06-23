@@ -26,6 +26,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+on early-init
+    start osprey-config-sh
+
 on boot
     # AK09912 driver parameter permissions
     chown system compass /sys/class/compass/akm09912/accel
@@ -71,6 +74,12 @@ service akmd09912 /system/vendor/bin/akmd09912
     class main
     user compass
     group compass misc input
+
+service osprey-config-sh /vendor/bin/init.osprey.config.sh
+    class core
+    user root
+    oneshot
+    disabled
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler bfq
