@@ -40,7 +40,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.osprey.config.sh \
+    init.device.config.sh \
     init.target.rc
 
 # Sensors
